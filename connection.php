@@ -1,15 +1,16 @@
 <?php
 
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "Hashtag";
+$servername = "localhost";
+$username = "root"; 
+$password = ""; 
+$database = "Hashtag"; 
 
-$conn = new mysqli($host, $username, $password, $database);
 
-if ($conn->connection_error) {
-    die("Connection failed: ". $conn->connect_error);
+$conn = new mysqli($servername, $username, $password, $database);
+
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
-
-
+?>
 ?>

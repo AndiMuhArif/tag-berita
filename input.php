@@ -1,17 +1,28 @@
 <?php
 
-require_once "connection.php";
-$hastag =$_POST["hashtag"];
+require_once 'connection.php';
 
-$sql = "INSERT INTO hashtags (Hashtag) VALUES ('$hastag)'";
-$result = connect()->query($sql);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ 
+  $hashtag = $_POST["hashtag"];
 
-if ($result) {
-    echo "Hastag berhasil ditambahkan";
-} else {
-    echo "Hastag gagal ditambahkan";
+
+  $query = "INSERT INTO hashtags (hashtag) VALUES ('$hashtag')";
+
+  
+  if (mysqli_query($conn, $query)) {
+    echo "Data berhasil disimpan.";
+  } else {
+    echo "Error: " . $query . "<br>" . mysqli_error($conn);
+  }
 }
 
-connect()-close();
+
+mysqli_close($conn);
+
+
+
+
+
 
 ?>
